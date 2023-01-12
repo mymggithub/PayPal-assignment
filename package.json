@@ -1,0 +1,29 @@
+{
+  "name": "paypal app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mymggithub/PayPal-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mymggithub/PayPal-assignment/issues"
+  },
+  "homepage": "https://github.com/mymggithub/PayPal-assignment#readme",
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.0"
+  }
+}
