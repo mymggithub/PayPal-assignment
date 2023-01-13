@@ -6,8 +6,14 @@ paypal
     createOrder: function (data, actions) {
       return fetch("/api/orders", {
         method: "post",
+        headers: {
+          'content-type': 'application/json'
+        },
         // use the "body" param to optionally pass additional order information
         // like product ids or amount
+        body: JSON.stringify({
+          products: JSON.parse(sessionStorage.getItem('shoppingCart'))
+        })
       })
         .then((response) => response.json())
         .then((order) => order.id);
@@ -43,8 +49,14 @@ if (paypal.HostedFields.isEligible()) {
     createOrder: () => {
       return fetch("/api/orders", {
         method: "post",
+        headers: {
+          'content-type': 'application/json'
+        },
         // use the "body" param to optionally pass additional order information like
         // product ids or amount.
+        body: JSON.stringify({
+          products: JSON.parse(sessionStorage.getItem('shoppingCart'))
+        })
       })
         .then((res) => res.json())
         .then((orderData) => {

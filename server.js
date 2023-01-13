@@ -7,8 +7,18 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"))
+app.use(express.json());
 
 app.get("/", async (req, res) => {
+  const clientId = process.env.CLIENT_ID;
+  try {
+    res.render("cart");
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+app.post("/checkout", async (req, res) => {
   const clientId = process.env.CLIENT_ID;
   try {
     const clientToken = await paypal.generateClientToken();
@@ -19,11 +29,11 @@ app.get("/", async (req, res) => {
   }
 });
 
-
 // create order
 app.post("/api/orders", async (req, res) => {
+  const { products } = req.body;
   try {
-    const order = await paypal.createOrder();
+    const order = await paypal.createOrder(products);
     res.json(order);
   } catch (err) {
     res.status(500).send(err.message);

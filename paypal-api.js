@@ -6,8 +6,12 @@ const base = "https://api-m.sandbox.paypal.com";
 export const currency = "USD";
 
 // call the create order method
-export async function createOrder() {
-  const purchaseAmount = "20.00"; // TODO: pull prices from a database
+export async function createOrder(products) {
+  var total = 0;
+  products.forEach(product => {
+    total+=product.price*product.count;
+  });
+  const purchaseAmount = total; // TODO: pull prices from a database
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {

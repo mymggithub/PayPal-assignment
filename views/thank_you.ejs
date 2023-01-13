@@ -8,5 +8,10 @@
 <body>
 	<h3>Thank you for your payment!</h3>
 	<p>Transaction ID: <%= transactionID %></p>
+	<a href="/">Home</a>
+	<script type="text/javascript">
+		cart = [];
+		sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+	</script>
 </body>
 </html>
