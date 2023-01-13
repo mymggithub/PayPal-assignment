@@ -38,9 +38,9 @@ app.post("/checkout", async (req, res) => {
 
 // create order
 app.post("/api/orders", async (req, res) => {
-  const { products } = req.body;
+  const { products, addr } = req.body;
   try {
-    const order = await paypal.createOrder(products);
+    const order = await paypal.createOrder(products, addr);
     res.json(order);
   } catch (err) {
     res.status(500).send(err.message);

@@ -7,7 +7,7 @@ const base = "https://api-m.sandbox.paypal.com";
 export const currency = "USD";
 
 // call the create order method
-export async function createOrder(orders) {
+export async function createOrder(orders, addr) {
   var total = 0;
   var pp_item_list = [];
   orders.forEach(item => {
@@ -41,12 +41,12 @@ export async function createOrder(orders) {
         {
           shipping:{
             address: {
-              address_line_1: "Main St",
-              address_line_2: "123",
-              admin_area_2: "San Jose",
-              admin_area_1: "CA",
-              postal_code: "95131",
-              country_code: "US"
+              address_line_1: addr.streetAddress,
+              address_line_2: addr.extAddress,
+              admin_area_1: addr.state,
+              admin_area_2: addr.city,
+              postal_code: addr.zip,
+              country_code: addr.countryCodeAlpha2
             }
           },
           amount: {

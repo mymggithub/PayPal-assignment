@@ -12,7 +12,15 @@ paypal
         // use the "body" param to optionally pass additional order information
         // like product ids or amount
         body: JSON.stringify({
-          products: JSON.parse(sessionStorage.getItem('shoppingCart'))
+          products: JSON.parse(sessionStorage.getItem('shoppingCart')),
+          addr: {
+            streetAddress: document.getElementById("shipping-address-street").value,
+            extAddress: document.getElementById("shipping-address-unit").value,
+            state: document.getElementById("shipping-address-state").value,
+            city: document.getElementById("shipping-address-city").value,
+            zip: document.getElementById("shipping-address-zip").value,
+            countryCodeAlpha2: document.getElementById("shipping-address-country").value,// Country Code
+          }
         })
       })
         .then((response) => response.json())
@@ -55,7 +63,15 @@ if (paypal.HostedFields.isEligible()) {
         // use the "body" param to optionally pass additional order information like
         // product ids or amount.
         body: JSON.stringify({
-          products: JSON.parse(sessionStorage.getItem('shoppingCart'))
+          products: JSON.parse(sessionStorage.getItem('shoppingCart')),
+          addr: {
+            streetAddress: document.getElementById("shipping-address-street").value,
+            extAddress: document.getElementById("shipping-address-unit").value,
+            state: document.getElementById("shipping-address-state").value,
+            city: document.getElementById("shipping-address-city").value,
+            zip: document.getElementById("shipping-address-zip").value,
+            countryCodeAlpha2: document.getElementById("shipping-address-country").value,// Country Code
+          }
         })
       })
         .then((res) => res.json())
