@@ -52,13 +52,14 @@ export async function createOrder(orders, addr) {
           amount: {
             currency_code: currency,
             value: purchaseAmount,
-            amount_breakdown:{
+            breakdown:{
               item_total:{
                 currency_code: currency,
                 value: purchaseAmount
               },
             },
           },
+          items: pp_item_list,
         },
       ],
     }),
