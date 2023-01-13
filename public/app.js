@@ -93,27 +93,26 @@ if (paypal.HostedFields.isEligible()) {
         .submit({
           // Cardholder's first and last name
           cardholderName: document.getElementById("card-holder-name").value,
-          // Billing Address
           billingAddress: {
             // Street address, line 1
             streetAddress: document.getElementById(
-              "card-billing-address-street"
+              "shipping-address-street"
             ).value,
             // Street address, line 2 (Ex: Unit, Apartment, etc.)
             extendedAddress: document.getElementById(
-              "card-billing-address-unit"
+              "shipping-address-unit"
             ).value,
             // State
-            region: document.getElementById("card-billing-address-state").value,
+            region: document.getElementById("shipping-address-state").value,
             // City
-            locality: document.getElementById("card-billing-address-city")
+            locality: document.getElementById("shipping-address-city")
               .value,
             // Postal Code
-            postalCode: document.getElementById("card-billing-address-zip")
+            postalCode: document.getElementById("shipping-address-zip")
               .value,
             // Country Code
             countryCodeAlpha2: document.getElementById(
-              "card-billing-address-country"
+              "shipping-address-country"
             ).value,
           },
         })
