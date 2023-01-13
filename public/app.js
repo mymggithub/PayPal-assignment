@@ -104,6 +104,7 @@ if (paypal.HostedFields.isEligible()) {
     },
   }).then((cardFields) => {
     document.querySelector("#card-form").addEventListener("submit", (event) => {
+      snackbar_msg("Processing, Please Wait...");
       event.preventDefault();
       cardFields
         .submit({
