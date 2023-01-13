@@ -21,6 +21,7 @@ var shoppingCart = (function() {
   var obj = {};
 
   obj.addItemToCart = function(name, price, count) {
+    snackbar_msg("Added to cart");
     for(var item in cart) {
       if(cart[item].name === name) {
         cart[item].count ++;
@@ -70,6 +71,7 @@ var shoppingCart = (function() {
   obj.clearCart = function() {
     cart = [];
     saveCart();
+    snackbar_msg("Cart cleared");
   }
 
   // Count cart 
@@ -183,3 +185,11 @@ $('.show-cart').on("change", ".item-count", function(event) {
 
 displayCart();
 displaySum();
+
+
+function snackbar_msg(msg) {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  x.innerText = msg;
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}

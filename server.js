@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import * as paypal from "./paypal-api.js";
+import fs from "fs";
 
 const app = express();
 
@@ -12,7 +13,13 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   const clientId = process.env.CLIENT_ID;
   try {
-    res.render("cart");
+    fs.readFile('items.json', function(error, data) {
+      if(error){
+        res.status(500).send(error);
+      }else{
+        res.render("cart", { items: JSON.parse(data) });
+      }
+    })
   } catch (err) {
     res.status(500).send(err.message);
   }

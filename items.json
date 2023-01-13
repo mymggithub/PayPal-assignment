@@ -1,0 +1,12 @@
+{
+
+	"products": [
+		{
+			"id": 1,
+			"name": "bags",
+			"title": "Paper gift bags",
+			"price": 5,
+			"imgSrc":"https://m.media-amazon.com/images/I/61ddVi-m2CL._AC_SX679_.jpg"
+		}
+	]
+}
