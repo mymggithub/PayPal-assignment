@@ -13,119 +13,153 @@
     ></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <style type="text/css">
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
-}
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        margin: 0 -16px;
+      }
 
-.col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-}
+      .col-25 {
+        -ms-flex: 25%; /* IE10 */
+        flex: 25%;
+      }
 
-.col-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
-}
+      .col-50 {
+        -ms-flex: 50%; /* IE10 */
+        flex: 50%;
+      }
 
-.col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
-}
+      .col-75 {
+        -ms-flex: 75%; /* IE10 */
+        flex: 75%;
+      }
 
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
-}
+      .col-25,
+      .col-50,
+      .col-75 {
+        padding: 0 16px;
+      }
 
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-}
+      .container {
+        background-color: #f2f2f2;
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+      }
 
-input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+      input[type=text] {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
 
-label {
-  margin-bottom: 10px;
-  display: block;
-}
+      label {
+        margin-bottom: 10px;
+        display: block;
+      }
 
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
-}
+      .icon-container {
+        margin-bottom: 20px;
+        padding: 7px 0;
+        font-size: 24px;
+      }
 
-.btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
+      .btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        width: 100%;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 17px;
+      }
 
-.btn:hover {
-  background-color: #45a049;
-}
+      .btn:hover {
+        background-color: #45a049;
+      }
 
-span.price {
-  float: right;
-  color: grey;
-}
+      span.price {
+        float: right;
+        color: grey;
+      }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  }
-}
+      @media (max-width: 800px) {
+        .row {
+          flex-direction: column-reverse;
+        }
+        .col-25 {
+          margin-bottom: 20px;
+        }
+      }
+
+    #snackbar {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #333; 
+      color: #fff;
+      text-align: center;
+      border-radius: 2px; 
+      padding: 16px;
+      position: fixed; 
+      z-index: 1; 
+      left: 50%;
+      bottom: 30px;
+    }
+
+    #snackbar.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+
+    @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+
     </style>
   </head>
   <body>
-
-  <div class="col-25">
-    <div class="container">
-      <h4>Order Summary
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
-          <b id="summary-total-count">0</b>
-        </span>
-      </h4>
-      <div id="order-summary">
-      </div>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$<span id="summary-total">0</span></b></span></p>
-    </div>
-  </div>
-
-
-
-    <div id="paypal-button-container" class="paypal-button-container"></div>
-    <hr>
-    
-    <center><h4>OR</h4></center>
-    <hr>
     <div class="card_container">
       <form id="card-form">
+        <div class="col-25">
+          <div class="container">
+            <h4>Order Summary
+              <span class="price" style="color:black">
+                <i class="fa fa-shopping-cart"></i>
+                <b id="summary-total-count">0</b>
+              </span>
+            </h4>
+            <div id="order-summary">
+            </div>
+            <hr>
+            <p>Total <span class="price" style="color:black"><b>$<span id="summary-total">0</span></b></span></p>
+          </div>
+        </div>
+        <br><br>
         <INPUT TYPE="hidden" name="address_override" value="1">
         <label for="card-number">Card Number</label>
         <div id="card-number" class="card_field"></div>
@@ -213,7 +247,13 @@ span.price {
         <br /><br />
         <button value="submit" id="submit" class="btn">Pay</button>
       </form>
+      <hr>
+      <center><h4>OR</h4></center>
+      <hr>
+      <div id="paypal-button-container" class="paypal-button-container"></div>
     </div>
+
+    <div id="snackbar"></div>
     <script src="cart-api.js"></script>
     <script src="app.js"></script>
   </body>
