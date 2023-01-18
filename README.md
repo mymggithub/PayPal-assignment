@@ -1,5 +1,6 @@
 # PayPal-assignment 
 
+![Demo](./demo.gif)
 
 1. [Create an application](https://developer.paypal.com/dashboard/applications/sandbox/create)
 3. Add your app's `CLIENT_ID` and `APP_SECRET` to the `.env` file
