@@ -60,8 +60,9 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
 
 app.get("/thank_you/:transactionID/", async (req, res) => {
   const { transactionID } = req.params;
+  const currency = paypal.currency;
   try {
-    res.render("thank_you", { transactionID });
+    res.render("thank_you", { transactionID, currency });
   } catch (err) {
     res.status(500).send(err.message);
   }

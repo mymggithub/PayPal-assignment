@@ -7,9 +7,17 @@
 </head>
 <body>
 	<h3>Thank you for your payment!</h3>
+	<h4>Total: $<span class="cost"></span> <%= currency %></h4>
 	<p>Transaction ID: <%= transactionID %></p>
 	<a href="/">Home</a>
 	<script type="text/javascript">
+		cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+	    var totalCost = 0;
+	    var totalCart = 0;
+	    for(var item in cart) {
+	      totalCost += cart[item].price * cart[item].count;
+	    }
+	    document.getElementsByClassName("cost")[0].innerText = totalCost;
 		cart = [];
 		sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
 	</script>
