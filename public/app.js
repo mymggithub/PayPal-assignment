@@ -34,11 +34,11 @@ paypal
         .then((response) => response.json())
         .then((orderData) => {
           // Successful capture! For dev/demo purposes:
-          console.log(
-            "Capture result",
-            orderData,
-            JSON.stringify(orderData, null, 2)
-          );
+          // console.log(
+          //   "Capture result",
+          //   orderData,
+          //   JSON.stringify(orderData, null, 2)
+          // );
           const transaction = orderData.purchase_units[0].payments.captures[0];
           if (transaction.status == "COMPLETED") {
             actions.redirect(host + "/thank_you/" + transaction.id); 
